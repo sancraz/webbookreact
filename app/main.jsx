@@ -1,12 +1,8 @@
-/**
- * @jsx React.DOM
- */
-
 'use strict';
 
 require('bootstrap-webpack');
 require('./styles/main.scss');
 
-var App = require('./app');
+import App from './scripts/app';
 
-React.render(<App />, document.getElementById('landing'));
+React.render(<App />, document.body);
