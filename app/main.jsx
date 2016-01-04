@@ -1,8 +1,9 @@
 'use strict';
 
-require('bootstrap-webpack');
-require('./styles/main.scss');
+import 'bootstrap-webpack';
+import './styles/main.scss';
+import ReactDOM from 'react-dom';
 
 import App from './scripts/app';
 
-React.render(<App />, document.body);
+ReactDOM.render(<App />, document.getElementById('landing'));
