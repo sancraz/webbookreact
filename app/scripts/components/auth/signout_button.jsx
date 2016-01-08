@@ -4,7 +4,7 @@ export default class SignOut extends React.Component {
 	render() {
 		console.log(this.props);	
 		return (
-			<li><a>Sign out</a></li>
+			<li><a data-toggle="modal" data-target="#sign_out_modal">Sign out</a></li>
 		)
 	}
 }

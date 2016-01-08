@@ -23,7 +23,7 @@ export default class App extends React.Component {
 	getUser() {
 		if ( session_actions.getCurrentUser() ) {
         	this.setState({
-        		user: 'Alex'
+        		user: localStorage.email
         	});
     	};
     	console.log(this.state);
