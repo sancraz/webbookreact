@@ -25,7 +25,9 @@ header.header {
 	}
 }
 
-#sign_up_modal {
+#sign_up_modal,
+#sign_in_modal,
+#sign_out_modal {
 
 	.modal-dialog {
 		width: 60%;
@@ -43,10 +45,6 @@ header.header {
 			margin-top: 5px;
 			line-height: 8px;
 			color: red;
-		}
-
-		.passwordlength,
-		.pswdnotconfirm {
 			display: none;
 		}
 	}
