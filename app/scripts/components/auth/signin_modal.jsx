@@ -6,10 +6,11 @@ export default class SignInModal extends React.Component {
 		let selector1 = $('#user_name').val(),
 			selector2 = $('#user_password').val();
 		if ( selector1 === localStorage.email && selector2 == localStorage.password ) {
-			alert(123);
 			localStorage.setItem('hasCurrentUser', true);
 			$('.notvaliduser').css('display', 'none');
 			$('#sign_in_modal').modal('toggle');
+			$('.notvaliduser').css('display', 'none');
+			window.location.reload();
 			return true;
 		} else {
 			$('.notvaliduser').css('display', 'block');

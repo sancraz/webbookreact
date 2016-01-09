@@ -2,6 +2,8 @@
 
 export default class SignIn extends React.Component {
 	openModal() {
+		$('.form_message').css('display', 'none');
+		$('.form-group').removeClass('has-error');
 		$('.form-group input').val('');
 	}
 
