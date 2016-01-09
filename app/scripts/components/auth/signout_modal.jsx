@@ -4,6 +4,7 @@ export default class SignOutModal extends React.Component {
 	onsubmit() {
 		$('#sign_out_modal').modal('toggle');
 		localStorage.clear();
+		window.location.reload();
 	}
 
 	render() {
