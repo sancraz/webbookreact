@@ -10,7 +10,9 @@ export class Header extends React.Component {
     render() {
         return (
            	<header className="col-xs-12 header">
-				<div className="col-xs-6 pull-left">{this.props.brandName}</div>
+				<div className="col-xs-6 pull-left">
+					<a>{this.props.brandName}</a>
+				</div>
 				<ul className="col-xs-6 pull-right">
 					{localStorage.hasCurrentUser === 'true' ? <SignOut /> : <SignIn />}
 				</ul>

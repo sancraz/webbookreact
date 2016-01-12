@@ -1,16 +1,9 @@
 'use strict';
 
-import { SearchSection, Header, Footer } from './components/index';
+import { SearchSection, Header, Footer, NavPluginButton, NavigationPlugin } from './components/index';
 import session_actions from './actions/session_actions';
 
 export default class App extends React.Component {
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			user: 'vitaliy'
-		};
-	}
 
 	componentWillMount() {
 		this.getUser();
@@ -30,10 +23,16 @@ export default class App extends React.Component {
     }
 
 	render() {
+        console.log(this.state.user);
 		return (
     		<div className='webbooks-app'>
     			<Header brandName="webbooks" user={this.state.user} />
-    			<SearchSection />
+                <SearchSection />
+                {
+                    this.state.user == undefined ?
+                    <NavigationPlugin />:
+                    <NavPluginButton />
+                }
     			<Footer brandName="webbooks" developName="La`Soft and RailsSoft, Lviv" />
       		</div>
     	);
