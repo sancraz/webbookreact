@@ -9,7 +9,15 @@ header.header {
 
 	div {
 		margin: 10px 0;
+		cursor: pointer;
 		/*height: 100%;*/
+		a {
+			color: #333;
+			text-decoration: none;
+		}
+		a:hover {
+			color: #232323;
+		}
 	}
 
 	ul {
@@ -21,6 +29,16 @@ header.header {
 		li {
 			display: inline;
 			margin-right: 10px;
+
+			a {
+				margin: 0 10px;
+				text-decoration: none;
+				color: #4f4f4f;
+				cursor: pointer;
+			}
+			a:hover {
+				color: #333;
+			}
 		}
 	}
 }
@@ -71,6 +89,14 @@ section.search_section {
 		input.search_input {
 			border-radius: 5px;
 		}
+	}
+}
+
+div .nav_plugin {
+	button {
+		position: absolute;
+		bottom: 10%;
+		left: 5%;
 	}
 }
 
