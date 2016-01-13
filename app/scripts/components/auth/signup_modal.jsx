@@ -3,8 +3,10 @@
 export default class SignUpModal extends React.Component {
 
 	onsubmit() {
+		//create array to validate all fields
 		let signUpValid = [];
 
+		//push each validation
 		signUpValid.push(
 			this.validNameBlur(),
 			this.validEmailBlur(),
@@ -12,42 +14,53 @@ export default class SignUpModal extends React.Component {
 			this.confirmPswdBlur()
 		);
 
+		//check each validation from array
 		for (var i = 0; i < signUpValid.length; i++) {
 			if (signUpValid[i] === false) {
 				return;
 			}
 		};
+		//put user information into localstorage
 		localStorage.setItem('name', this.state.name);
 		localStorage.setItem('email', this.state.email);
 		localStorage.setItem('password', this.state.password);
-		console.log(this.state);
+		//clear input fields in forms
 		$('.form-group input').val('');
+		//close sign_up_modal
 		$('#sign_up_modal').modal('toggle');
+		//remove event "enterkey" press
 		$('#sign_up_modal').unbind('keydown');
 	}
 
+	//validate name input onchange
 	validName() {
 		let selector = $('.name_validate'),
 			name = $('.name_validate input').val();
 
+		//error
 		selector.addClass('has-error');
+		//success
 		if (name.length > 2) {
 			selector.removeClass('has-error').addClass('has-success');
 			this.setState({
 				name: name
 			});
+			//hide error message
 			$('.namenotvalid').css('display', 'none');
 			return true;
 		}
 	}
 
+	//validate name when namefield lose focus
 	validNameBlur() {
 		if ( !this.validName() ) {
+			//show error message
 			$('.namenotvalid').css('display', 'block');
 			return false;
 		}
 	}
 
+	//validate email onchange
 	validEmail() {
 		let selector = $('.email_validate'),
 			email = $('.email_validate input').val(),
@@ -61,19 +74,22 @@ export default class SignUpModal extends React.Component {
 			this.setState({
 				email: email
 			});
+			//hide error message
 			$('.emailnotvalid').css('display', 'none');
 			return true;
 		}
 	}
 
+	//validate email when namefield lose focus
 	validEmailBlur() {
 		if ( !this.validEmail() ) {
+			//show error message
 			$('.emailnotvalid').css('display', 'block');
-			console.log('email error');
 			return false;
 		}
 	}
 
+	//validate password onchange
 	validPswdChange() {
 		let selector = $('.pswd_validate'),
 			pswd = $('.pswd_validate input').val(),
@@ -86,6 +102,7 @@ export default class SignUpModal extends React.Component {
 			this.setState({
 				password: pswd
 			});
+			//hide password error messages
 			$('.pswdlowercase').css('display', 'none');
 			$('.pswduppercase').css('display', 'none');
 			$('.pswdnumeric').css('display', 'none');
@@ -94,14 +111,21 @@ export default class SignUpModal extends React.Component {
 		}
 	}
 
+	//validate password confirmation onchange
 	confirmPswd() {
 		$('.pswd_confirm').addClass('has-error');
+		//check length of password
 		if ($('.pswd_confirm input').val().length > 7) {
+			//check values of password and confirmation fields
+			//success
 			if ($('.signup_password').val() === $('.signup_password_confirm').val()) {
+				//hide confirmation error message
 				$('.pswdnotconfirm').css('display', 'none');
 				$('.pswd_confirm').removeClass('has-error').addClass('has-success');
 				return true;
+			//error
 			} else {
+				//show confirmation message
 				$('.pswdnotconfirm').css('display', 'block');
 				return false;
 			}
@@ -110,9 +134,12 @@ export default class SignUpModal extends React.Component {
 		}
 	}
 
+	//validate password confirmation when password
+	//confirmation field lose focus
 	confirmPswdBlur() {
 
 		if ( $('.pswd_confirm input').val().length < 8 ) {
+			//show error confirmation message
 			$('.pswdnotconfirm').css('display', 'block');
 			return false;
 		}
@@ -122,6 +149,7 @@ export default class SignUpModal extends React.Component {
 		}
 	}
 
+	//validate password confirmation when password field lose focus
 	validPswdBlur() {
 		if ( !this.validPswdChange() ) {
 			let pswd = $('.pswd_validate input').val(),
@@ -129,27 +157,31 @@ export default class SignUpModal extends React.Component {
 				contains_uppercase = /[A-Z]/,
 				contains_number = /[0-9]/;
 
+				//check lowercase character
 				if (contains_lowercase.test(pswd) === false) {
+					//show lowercase error
 					$('.pswdlowercase').css('display', 'block');
-					console.log('error lowercase');
 					return false;
 				}
 
+				//check uppercase character
 				if (contains_uppercase.test(pswd) === false) {
+					//show uppercase error
 					$('.pswduppercase').css('display', 'block');
-					console.log('error uppercase');
 					return false;
 				}
 
+				//check number character
 				if (contains_number.test(pswd) === false) {
+					//show number error
 					$('.pswdnumeric').css('display', 'block');
-					console.log('error number');
 					return false;
 				}
 
+				//check password length
 				if (selector.val().length < 8) {
+					//show length error
 					$('.pswdlength').css('display', 'block');
-					console.log('should be more than 7 characters');
 					return false;
 				}
 			return false;
@@ -157,6 +189,7 @@ export default class SignUpModal extends React.Component {
 	}
 
 	componentDidMount() {
+		//add event "enterkey" press
 		var self = this;
 		$('#sign_up_modal').bind('keydown', function(e) {
 			if (e.keyCode == 13) {

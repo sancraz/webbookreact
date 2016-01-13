@@ -1,6 +1,7 @@
 "use strict";
 
 export class SearchSection extends React.Component {
+    
     goToNavPlugin() {
         window.location.reload();
     }

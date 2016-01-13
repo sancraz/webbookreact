@@ -2,13 +2,16 @@
 
 export default class SignOutModal extends React.Component {
 	onsubmit() {
+		//close sign_out_modal
 		$('#sign_out_modal').modal('toggle');
+		//remove event "enterkey" press
 		$('#sign_out_modal').unbind('keydown');
 		localStorage.clear();
 		window.location.reload();
 	}
 
 	componentDidMount() {
+		//add event "enterkey" press
 		var self = this;
 		$('#sign_out_modal').bind('keydown', function(e) {
 			if (e.keyCode == 13) {

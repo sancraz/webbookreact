@@ -1,24 +1,30 @@
 "use strict";
 
 export default class SignInModal extends React.Component {
+
 	onsubmit() {
+		//hide sign in error message
 		$('.notvaliduser').css('display', 'none');
 		let selector1 = $('#user_name').val(),
 			selector2 = $('#user_password').val();
 		if ( selector1 === localStorage.email && selector2 == localStorage.password ) {
+			//set item in localstorage, checking in Header
 			localStorage.setItem('hasCurrentUser', true);
-			$('.notvaliduser').css('display', 'none');
 			$('#sign_in_modal').modal('toggle');
+			//hide sign in error message
 			$('.notvaliduser').css('display', 'none');
+			//remove event "enterkey" press
 			$('#sign_in_modal').unbind('keydown');
 			window.location.reload();
 			return true;
 		} else {
+			//show sign in error message
 			$('.notvaliduser').css('display', 'block');
 		}
 	}
 
 	componentDidMount() {
+		//add event "enterkey" press
 		var self = this;
 		$('#sign_in_modal').bind('keydown', function(e) {
 			if (e.keyCode == 13) {
