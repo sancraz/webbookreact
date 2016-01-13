@@ -1,6 +1,10 @@
 "use strict";
 
 export class SearchSection extends React.Component {
+    goToNavPlugin() {
+        window.location.reload();
+    }
+    
     render() {
         return (
             <section className="col-xs-12 search_section">
@@ -12,7 +16,14 @@ export class SearchSection extends React.Component {
                         className="form-control search_input" 
                 placeholder="book or author" />
                 </div>
-            </section> 
+                <div className="nav_plugin_button">
+                    <button type="button" 
+                        onClick={this.goToNavPlugin.bind(this)} 
+                        className="btn btn-default">
+                            <a href="#navplugin">Go to Plugin Page</a>
+                    </button>
+                </div>
+            </section>
     	);
   	}
 }
