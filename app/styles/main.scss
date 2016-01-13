@@ -103,6 +103,13 @@ div .nav_placeholder {
 	}
 }
 
+div .about_us {
+	margin-top:10%;
+	p,a {
+		margin:3%;
+	}
+}
+
 footer.footer {
 	position:fixed;
 	bottom:0px;
@@ -114,5 +121,15 @@ footer.footer {
 	
 	p.powered {
 		text-align:center;
+	}
+
+	a {
+		font-size:15px;
+		color:#4f4f4f;
+		text-decoration:none;
+	}
+
+	a:hover {
+		color:#333;
 	}
 }

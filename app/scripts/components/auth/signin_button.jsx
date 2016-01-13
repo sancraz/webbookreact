@@ -1,9 +1,13 @@
 'use strict';
 
 export default class SignIn extends React.Component {
+
 	openModal() {
+		//avoid error messages in signin_modal
 		$('.form_message').css('display', 'none');
+		//avoid error-inputs in signin_modal
 		$('.form-group').removeClass('has-error');
+		//clear input fields in forms
 		$('.form-group input').val('');
 	}
 

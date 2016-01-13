@@ -1,6 +1,7 @@
 "use strict";
 
 export class NavigationPlugin extends React.Component {
+    
 	backToHomePage() {
 		window.location.reload();
 	}
