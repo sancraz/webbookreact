@@ -1,6 +1,6 @@
 'use strict';
 
-import { SearchSection, Header, Footer, NavPluginButton, NavigationPlugin } from './components/index';
+import { SearchSection, Header, Footer, NavigationPlugin } from './components/index';
 import session_actions from './actions/session_actions';
 
 export default class App extends React.Component {
@@ -10,7 +10,9 @@ export default class App extends React.Component {
 	}
 
 	componentDidMount() {
-		console.log(this.state);
+        this.setState({
+            route: window.location.hash.substring(1)
+        })
 	}
 
 	getUser() {
@@ -23,16 +25,17 @@ export default class App extends React.Component {
     }
 
 	render() {
-        console.log(this.state.user);
+        let Child;
+        console.log(this.state);
+        switch (this.state.route) {
+            case 'navplugin': Child = NavigationPlugin; break;
+            default:      Child = SearchSection;
+        }
+
 		return (
     		<div className='webbooks-app'>
     			<Header brandName="webbooks" user={this.state.user} />
-                <SearchSection />
-                {
-                    this.state.user == undefined ?
-                    <NavigationPlugin />:
-                    <NavPluginButton />
-                }
+                <Child />
     			<Footer brandName="webbooks" developName="La`Soft and RailsSoft, Lviv" />
       		</div>
     	);

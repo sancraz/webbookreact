@@ -5,6 +5,8 @@
 }
 
 header.header {
+	position: absolute;
+	top: 0;
 	background-color: gray;
 
 	div {
@@ -88,15 +90,16 @@ section.search_section {
 	div {
 		input.search_input {
 			border-radius: 5px;
+			margin: 3%;
 		}
 	}
 }
 
-div .nav_plugin {
-	button {
-		position: absolute;
-		bottom: 10%;
-		left: 5%;
+div .nav_placeholder {
+	margin-top: 10%;
+
+	p,a {
+		margin: 3%;
 	}
 }
 
